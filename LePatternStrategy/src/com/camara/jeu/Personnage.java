@@ -27,4 +27,8 @@ public abstract class Personnage {
 	public void soigner() {
 		this.soin.soigner();
 	}
+	
+	public void setSoin(Soin soin) {
+		this.soin = soin;
+	}
 }
