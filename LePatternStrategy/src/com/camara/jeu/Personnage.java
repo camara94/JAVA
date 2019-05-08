@@ -1,36 +1,30 @@
 package com.camara.jeu;
 
+import com.camara.comportement.*;
+
 public abstract class Personnage {
-	protected String armes = "";
-	protected String chaussure ="";
-	protected String sacSoin = "";
+	protected EspritCombatif espritCombatif = new Pacifiste();
+	protected Deplacement deplacement = new Marcher();
+	protected Soin soin = new AucunSoin();
 	
-	public String getArmes() {
-		return armes;
+	public Personnage() {
+		
 	}
-	public void setArmes(String armes) {
-		this.armes = armes;
+	public Personnage(EspritCombatif espritCombatif, Deplacement deplacement, Soin soin) {
+		this.espritCombatif = espritCombatif;
+		this.deplacement = deplacement;
+		this.soin = soin;
 	}
-	public String getChaussure() {
-		return chaussure;
-	}
-	public void setChaussure(String chaussure) {
-		this.chaussure = chaussure;
-	}
-	public String getSacSoin() {
-		return sacSoin;
-	}
-	public void setSacSoin(String sacSoin) {
-		this.sacSoin = sacSoin;
-	}
-	
+
 	public void seDeplacer() {
-		System.out.println("Je me déplace à pieds.");
+		this.deplacement.deplacer();
 	}
+	
 	public void combattre() {
-		System.out.println("Je ne combats pas.");
+		this.espritCombatif.combat();
 	}
+	
 	public void soigner() {
-		System.out.println("Je ne soigne pas.");
+		this.soin.soigner();
 	}
 }

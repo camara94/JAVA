@@ -1,14 +1,17 @@
 package com.camara.jeu;
 
+import com.camara.comportement.CombatPistolet;
+import com.camara.comportement.Deplacement;
+import com.camara.comportement.EspritCombatif;
+import com.camara.comportement.Soin;
+
 public class Guerrier extends Personnage{
-	@Override
-	public void combattre() {
-		if (this.armes.equals("pistolet")) {
-			System.out.println("Attaque au pistolet !");
-		} else if(this.armes.equals("fusil de sniper")) {
-			System.out.println("Attaque au fusil de sniper !");
-		} else {
-			System.out.println("Attaque au couteau !");
-		}
+	public Guerrier(EspritCombatif espritCombatif, Deplacement deplacement, Soin soin) {
+		super(espritCombatif, deplacement, soin);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Guerrier() {
+		this.espritCombatif = new CombatPistolet();
 	}
 }

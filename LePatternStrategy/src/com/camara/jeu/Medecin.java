@@ -1,21 +1,18 @@
 package com.camara.jeu;
 
+import com.camara.comportement.Deplacement;
+import com.camara.comportement.EspritCombatif;
+import com.camara.comportement.PremierSoin;
+import com.camara.comportement.Soin;
+
 public class Medecin extends Personnage{
-	@Override
-	public void combattre() {
-		if (this.armes.equals("pistolet")) {
-			System.out.println("Attaque au pistolet !");
-		}  else {
-			System.out.println("Vive le scalpel !");
-		}
+
+	public Medecin() {
+		this.soin = new PremierSoin();
+	}
+	public Medecin(EspritCombatif espritCombatif, Deplacement deplacement, Soin soin) {
+		super(espritCombatif, deplacement, soin);
+		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public void soigner() {
-		if (this.sacSoin.equals("petit sac")) {
-			System.out.println("Je peux recoudre des blessures.");
-		} else {
-			System.out.println("Je soigne les blessures.");
-		}
-	}
 }

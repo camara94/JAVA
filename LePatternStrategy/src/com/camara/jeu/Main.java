@@ -10,8 +10,6 @@ public class Main {
 			System.out.println("\nInstance de " + tPers[i].getClass().getName());
 			System.out.println("******************************************");
 			tPers[i].combattre();
-			tPers[i].setArmes(tArmes[i]);
-			tPers[i].combattre();
 			tPers[i].seDeplacer();
 			tPers[i].soigner();
 		}
