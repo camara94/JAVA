@@ -15,6 +15,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Main {
 
@@ -129,8 +135,9 @@ public class Main {
 	      Game[] o = {new Game("Assassin Creed", "Aventure", 45.69), new Game("Tomb Raider", "Plateforme", 23.45), new Game("Tetris", "Stratégie", 2.50)};
 	     //writeWithObjectOutputStream("dossiers/game.txt", o);
 	      String url = "dossiers/game.txt";
-	      readWithObjectInputStream(url);
+	      //readWithObjectInputStream(url);
 	      //Fin des entrées sortie en java
+	      readWithNio("../dictionnaire.txt");
 	}
 	
 	private static void writeWithDataOutputStream() {
@@ -303,5 +310,28 @@ public class Main {
 		    } catch (IOException e) {
 		      e.printStackTrace();
 		    }
+	}
+	
+	private static void readWithNio(String url) {
+		try (FileSystem zipFS = FileSystems.newFileSystem(Paths.get(url), null)) {
+
+			  //Suppression d'un fichier à l'intérieur du ZIP :
+			  Files.deleteIfExists( zipFS.getPath("test.txt") );
+
+			  //Création d'un fichier à l'intérieur du ZIP :
+			  Path path = zipFS.getPath(url);
+			  String message = "Hello World !!!";
+			  Files.write(path, message.getBytes());
+
+			  //Parcours des éléments à l'intérieur du ZIP :
+			  try (DirectoryStream<Path> stream = Files.newDirectoryStream(zipFS.getPath("/"))) {
+			    for (Path entry : stream) {
+			      System.out.println(entry);
+			    }
+			  }
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
