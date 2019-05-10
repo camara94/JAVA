@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -94,10 +95,19 @@ public class Main {
 				new Personne(40, "tutu")
 		);
 		
-		Function<Personne, String> f1 = (Personne p) -> p.getNom();
+		/*Function<Personne, String> f1 = (Personne p) -> p.getNom();
 		Function<Personne, Integer> f2 = (Personne p) -> p.getAge() * 2;
 		System.out.println(transformToListString(lPersonne, f1));
-		System.out.println(transformToListInt(lPersonne, f2));
+		System.out.println(transformToListInt(lPersonne, f2));*/
+		
+		Consumer<String> dd = System.out::println;
+		
+		dd.accept("Camara Laby Damaro");
+		
+		Dialoguer ddd = System.out::println;
+		ddd.parler("Je parle bien le Français");
+		
+		
 	}
 	
 	
