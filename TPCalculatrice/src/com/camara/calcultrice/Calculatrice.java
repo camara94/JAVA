@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
   
 public class Calculatrice extends JFrame {
   private JPanel container = new JPanel();
@@ -24,7 +25,6 @@ public class Calculatrice extends JFrame {
   private double chiffre1;
   private boolean clicOperateur = false, update = false;
   private String operateur = "";
-  
   public Calculatrice(){
     this.setSize(240, 260);
     this.setTitle("Calculette");
